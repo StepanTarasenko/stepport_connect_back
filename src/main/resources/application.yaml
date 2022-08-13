@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stepport_connect
+    username: stepan
+    password: stepan
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        default_schema: stepport_connect
+        jdbc:
+          batch_size: 20
+  flywaydb:
+    url: jdbc:postgresql://localhost:5432/stepport_connect
+    user: stepan
+    password: stepan
