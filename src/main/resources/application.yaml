@@ -8,7 +8,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
-        default_schema: stepport_connect
         jdbc:
           batch_size: 20
   flywaydb:

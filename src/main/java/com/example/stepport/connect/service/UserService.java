@@ -6,6 +6,7 @@ import com.example.stepport.connect.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class UserService {
@@ -17,11 +18,19 @@ public class UserService {
     }
 
     public User save(UserDto userDto) {
-        User user = new User(userDto.getName());
+        User user = new User(userDto.getName(), userDto.getAge());
         return repository.save(user);
     }
 
     public List<User> findUsers() {
         return repository.findAll();
+    }
+
+    public User findById(Long id) {
+        return repository.findById(id).orElseThrow(() -> new NoSuchElementException(String.format("User with %d not found", id)));
+    }
+
+    public List<User> findOldUsers() {
+        return repository.findAllByAgeGreaterThanEqual(18);
     }
 }

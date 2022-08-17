@@ -3,21 +3,36 @@ package com.example.stepport.connect.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "person")
 public class User {
     @Id
-    private long id;
-    @Column(columnDefinition="name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
 
-    public User(String name) {
-        this.name = name;
+    public int getAge() {
+        return age;
     }
 
-    public long getId() {
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    private int age;
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public User() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
